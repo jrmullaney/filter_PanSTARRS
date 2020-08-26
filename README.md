@@ -5,19 +5,20 @@ python filterRefCatsAB.py
 ```
 which filters the original catalogue (in ps1_pv3_3pi_20170110/) to only include bright (Gmag<19) sources and converts fluxes and errors to AB mags. The filtered fits files are dumped into ps1_pv3_3pi_20170110_filteredAB.
 
+Next:
 ```
 mkdir DATA
 echo lsst.obs.test.TestMapper > DATA/_mapper
 setup obs_test
 ``` 
-
+then:
 ```
 ingestReferenceCatalog.py DATA ./ps1_pv3_3pi_20170110_filteredAB/13*.fits --output refcat --configfile indexReferenceCatalogOverride.py &
 ingestReferenceCatalog.py DATA ./ps1_pv3_3pi_20170110_filteredAB/14*.fits --output refcat --configfile indexReferenceCatalogOverride.py &
    ...
 ingestReferenceCatalog.py DATA ./ps1_pv3_3pi_20170110_filteredAB/26*.fits --output refcat --configfile indexReferenceCatalogOverride.py &
 ```
-I found I needed to do this multiple times (i.e., as opposed to `*.fit`), as there were too many files to cope with in the ps1_pv3_3pi_20170110_filteredAB directory.
+I found I needed to do this multiple times (i.e., as opposed to `*.fits`), as there were too many files to cope with in the `ps1_pv3_3pi_20170110_filteredAB` directory.
 
 ```
 mkdir ps1_pv3_3pi_20170110_GmagLT19
